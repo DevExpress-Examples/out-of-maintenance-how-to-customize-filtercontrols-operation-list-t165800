@@ -3,17 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" x:Class="CustomFilterPopupExample.MainWindow"
     xmlns:local="clr-namespace:CustomFilterPopupExample"
-        Title="MainWindow" Height="350" Width="525">
+    xmlns:dxfui="http://schemas.devexpress.com/winfx/2008/xaml/core/filteringui"
+    Title="MainWindow" Height="350" Width="525">
     <Window.DataContext>
         <local:TaskViewModel/>
     </Window.DataContext>
     <Grid>
-
         <dxg:GridControl ItemsSource="{Binding List}" AutoGenerateColumns="AddNew" x:Name="grid">
             <dxg:GridControl.View>
-                <local:CustomTableView FilterEditorCreated="CustomTableView_FilterEditorCreated"/>
+                <dxg:TableView x:Name="view">
+                    <dxg:TableView.FilterEditorTemplate>
+                        <DataTemplate>
+                            <dxfui:FilterEditorControl QueryOperators="OnQueryOperators" />
+                        </DataTemplate>
+                    </dxg:TableView.FilterEditorTemplate>
+                </dxg:TableView>
             </dxg:GridControl.View>
         </dxg:GridControl>
-
     </Grid>
 </Window>
