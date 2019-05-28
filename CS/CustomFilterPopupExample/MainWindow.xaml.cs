@@ -1,18 +1,6 @@
-﻿using DevExpress.Xpf.Grid;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DevExpress.Xpf.Core.FilteringUI;
+using DevExpress.Xpf.Grid;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CustomFilterPopupExample
 {
@@ -26,24 +14,26 @@ namespace CustomFilterPopupExample
             InitializeComponent();
         }
 
-        private void CustomTableView_FilterEditorCreated(object sender, DevExpress.Xpf.Grid.FilterEditorEventArgs e)
-        {
-            e.FilterControl.BeforeShowValueEditor += FilterControl_BeforeShowValueEditor;
-        }
-
-        void FilterControl_BeforeShowValueEditor(object sender, DevExpress.Xpf.Editors.Filtering.ShowValueEditorEventArgs e)
-        {
-            var column = grid.Columns.GetColumnByFieldName(e.CurrentNode.FirstOperand.PropertyName) as GridColumn;
-
-            if (column.FieldType == typeof(int))
-            {
-                e.CurrentNode.Operation = DevExpress.Data.Filtering.Helpers.ClauseType.DoesNotEqual;
+        void OnQueryOperators(object sender, FilterEditorQueryOperatorsEventArgs e) {
+            if (e.FieldName == "Name") {
+                e.Operators.Clear();
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.Equal));
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.NotEqual));
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.Contains));
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.StartsWith));
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.EndsWith));
+                e.DefaultOperator = e.Operators[FilterEditorOperatorType.Contains];
             }
-            else if (column.FieldType == typeof(string))
-            {
-                e.CurrentNode.Operation = DevExpress.Data.Filtering.Helpers.ClauseType.Contains;
+            else if (e.FieldName == "SubscribeNumber") {
+                e.Operators.Clear();
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.Equal));
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.NotEqual));
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.Greater));
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.GreaterOrEqual));
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.Less));
+                e.Operators.Add(new FilterEditorOperatorItem(FilterEditorOperatorType.LessOrEqual));
+                e.DefaultOperator = e.Operators[FilterEditorOperatorType.LessOrEqual];
             }
-            else e.CurrentNode.Operation = DevExpress.Data.Filtering.Helpers.ClauseType.Equals;
         }
     }
 }
