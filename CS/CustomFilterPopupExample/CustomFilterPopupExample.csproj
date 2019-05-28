@@ -69,9 +69,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="CustomGridFilterColumn\CustomGridFilterColumn.cs" />
-    <Compile Include="CustomGridFilterColumn\CustomTableView.cs" />
+    </ApplicationDefinition>    
     <Compile Include="ViewModel\TaskViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
