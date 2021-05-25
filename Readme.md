@@ -1,11 +1,8 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [CustomGridFilterColumn.cs](./CS/CustomFilterPopupExample/CustomGridFilterColumn/CustomGridFilterColumn.cs) (VB: [CustomGridFilterColumn.vb](./VB/CustomFilterPopupExample/CustomGridFilterColumn/CustomGridFilterColumn.vb))
-* [CustomTableView.cs](./CS/CustomFilterPopupExample/CustomGridFilterColumn/CustomTableView.cs) (VB: [CustomTableView.vb](./VB/CustomFilterPopupExample/CustomGridFilterColumn/CustomTableView.vb))
 * [MainWindow.xaml](./CS/CustomFilterPopupExample/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/CustomFilterPopupExample/MainWindow.xaml))
 * [MainWindow.xaml.cs](./CS/CustomFilterPopupExample/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/CustomFilterPopupExample/MainWindow.xaml.vb))
-* [TaskViewModel.cs](./CS/CustomFilterPopupExample/ViewModel/TaskViewModel.cs) (VB: [TaskViewModel.vb](./VB/CustomFilterPopupExample/ViewModel/TaskViewModel.vb))
 <!-- default file list end -->
 # How to customize the Filter Editor's operator list
 
